@@ -6,18 +6,21 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 export class AuthService {
 
 
-  constructor( jwtToken: JwtService){}
+  constructor( private jwtToken: JwtService){}
   
   login(createAuthDto: CreateAuthDto) {
     console.log(createAuthDto);
 
-
-
-    const data = {
-      token:'',
+    const payload = {
       user: createAuthDto.user
     }
-    return createAuthDto;
+    const token = this.jwtToken.sign(payload);
+
+    const data = {
+      token,
+      user: createAuthDto.user
+    }
+    return data;
   }
 
 
