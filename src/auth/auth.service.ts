@@ -9,13 +9,13 @@ export class AuthService {
   constructor( private jwtToken: JwtService){}
   
   login(createAuthDto: CreateAuthDto) {
-    console.log(createAuthDto);
 
     const payload = {
       user: createAuthDto.user
     }
     const token = this.jwtToken.sign(payload);
 
+    console.log(`Se logueo el usuario ${createAuthDto.user} y se le asigno el token ${token}`);
     const data = {
       token,
       user: createAuthDto.user
