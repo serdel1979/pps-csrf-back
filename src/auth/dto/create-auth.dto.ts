@@ -5,6 +5,10 @@ export class CreateAuthDto {
     @MinLength(4)
     @MaxLength(20)
     user: string;
+    @IsNotEmpty()
+    @MinLength(4)
+    @MaxLength(20)
+    password: string;
 }
 
 
